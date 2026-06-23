@@ -156,6 +156,23 @@ header {
 .step h3 { font-size: 1.15rem; margin-bottom: 4px; }
 .step p { color: var(--aha-text-muted); font-size: .95rem; }
 
+/* Termine */
+.termine-block { max-width: 860px; margin: 32px auto 0; }
+.termine-block summary { font-size: 1.02rem; }
+.termine-wrap { padding: 4px 24px 24px; }
+.termine-phase { font-weight: 800; font-size: .95rem; color: var(--aha-red); margin: 22px 0 8px; }
+.termine-phase:first-child { margin-top: 6px; }
+.termine-scroll { overflow-x: auto; }
+table.termine { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 540px; }
+table.termine th, table.termine td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--aha-border); vertical-align: top; }
+table.termine th { font-weight: 800; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--aha-ink); }
+table.termine td:first-child { white-space: nowrap; font-weight: 800; }
+table.termine td:nth-child(2) { white-space: nowrap; color: var(--aha-text-muted); }
+.t-tag { display: inline-block; font-size: .68rem; font-weight: 800; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+.t-tag.ws { background: rgba(180,15,27,.10); color: var(--aha-red); }
+.t-tag.fr { background: rgba(45,45,45,.07); color: var(--aha-ink); }
+.termine-note { font-size: .82rem; color: var(--aha-text-muted); margin-top: 16px; line-height: 1.5; }
+
 /* Ergebnisse */
 .results { background: var(--aha-white); }
 .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
@@ -368,6 +385,52 @@ footer { padding: 48px 0 40px; }
       <div class="step"><div class="n">05</div><div><h3>Umsetzen mit Begleitung</h3><p>Du baust, wir begleiten dich – in den Live-Sessions und bei jedem Schritt der Umsetzung. Inklusive Testen und Verbessern, bis es im Kanzleialltag funktioniert.</p></div></div>
       <div class="step"><div class="n">06</div><div><h3>Dein Tool fertigstellen</h3><p>Am Ende hast du eine eigene, funktionsfähige Kanzlei-Lösung – gebaut von dir, im Einsatz bei euch.</p></div></div>
     </div>
+
+    <div class="termine-block">
+      <details>
+        <summary>Alle Termine im Überblick</summary>
+        <div class="termine-wrap">
+          <div class="termine-phase">Phase 1 · Das gemeinsame Projekt (Reisekostenformular mit DATEV-Export)</div>
+          <div class="termine-scroll">
+            <table class="termine">
+              <thead><tr><th>Termin</th><th>Datum</th><th>Zeit</th><th>Format</th><th>Thema</th></tr></thead>
+              <tbody>
+                <tr><td>Auftakt</td><td>Do 16.07.</td><td>13:00–14:30</td><td><span class="t-tag ws">Kickoff</span></td><td>Ablauf, Referent:innen, Voraussetzungen-Check</td></tr>
+                <tr><td>W1</td><td>Di 21.07.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>Was ist Claude und Claude Code? Und wie es sich von anderen KI-Tools unterscheidet</td></tr>
+                <tr><td>W2</td><td>Do 23.07.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>Was soll das Tool können? Umfang festlegen + Beispielprojekt</td></tr>
+                <tr><td>—</td><td>Di 28.07.</td><td>14:45–16:15</td><td><span class="t-tag fr">Fragerunde</span></td><td>Boxenstopp</td></tr>
+                <tr><td>W3</td><td>Do 30.07.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>Anforderungen festhalten – dein „Lastenheft“ für Claude</td></tr>
+                <tr><td>—</td><td>Di 04.08.</td><td>14:45–16:15</td><td><span class="t-tag fr">Fragerunde</span></td><td>Boxenstopp</td></tr>
+                <tr><td>W4</td><td>Do 06.08.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>Zwischenstände sichern und zurücksetzen können (Versionierung) + Testen starten</td></tr>
+                <tr><td>—</td><td>Di 11.08.</td><td>14:45–16:15</td><td><span class="t-tag fr">Fragerunde</span></td><td>Boxenstopp</td></tr>
+                <tr><td>W5</td><td>Do 13.08.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>DATEV-Export testen & Fehler beheben</td></tr>
+                <tr><td>—</td><td>Di 18.08.</td><td>14:45–16:15</td><td><span class="t-tag fr">Fragerunde</span></td><td>Boxenstopp</td></tr>
+                <tr><td>W6</td><td>Do 20.08.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>Funktionen erweitern & gegen Fehleingaben absichern</td></tr>
+                <tr><td>—</td><td>Di 25.08.</td><td>14:45–16:15</td><td><span class="t-tag fr">Fragerunde</span></td><td>Boxenstopp</td></tr>
+                <tr><td>W7</td><td>Do 27.08.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>Letzter Durchlauf & Übergang zum eigenen Projekt</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="termine-phase">Phase 2 · Die eigene Anwendung</div>
+          <div class="termine-scroll">
+            <table class="termine">
+              <thead><tr><th>Termin</th><th>Datum</th><th>Zeit</th><th>Format</th><th>Thema</th></tr></thead>
+              <tbody>
+                <tr><td>W8</td><td>Do 03.09.</td><td>13:00–14:30</td><td><span class="t-tag ws">Workshop</span></td><td>Eigenes Projekt klären: Umfang festlegen, klein anfangen, loslegen</td></tr>
+                <tr><td>W9</td><td>Fr 11.09.</td><td>10:45–12:15</td><td><span class="t-tag fr">Office-Hour</span></td><td>Persönliche Begleitung</td></tr>
+                <tr><td>W10</td><td>Do 17.09.</td><td>13:00–14:30</td><td><span class="t-tag ws">Ergänzungs-WS</span></td><td>Dein Projekt sicher online ablegen und sichern (mit GitHub)</td></tr>
+                <tr><td>W11</td><td>Do 24.09.</td><td>14:45–16:15</td><td><span class="t-tag fr">Office-Hour</span></td><td>Persönliche Begleitung</td></tr>
+                <tr><td>W12</td><td>Do 01.10.</td><td>13:00–14:30</td><td><span class="t-tag ws">Ergänzungs-WS</span></td><td>Aus deinem Tool eine Web-App machen und online stellen (Bonus)</td></tr>
+                <tr><td>Abschluss</td><td>Di 06.10.</td><td>14:45–16:15</td><td><span class="t-tag fr">Office-Hour</span></td><td>Demos, Abschluss, Ausblick</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="termine-note">Workshops in der Regel donnerstags, Frage- und Office-Hours dienstags – alle Sessions live über Zoom und als Aufzeichnung. In Phase 2 zusätzlich wöchentliche Office-Hour und E-Mail-Support; die Ergänzungs-Workshops sind Bonus. Arbeitsstand – kleinere Verschiebungen sind möglich.</p>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -468,7 +531,7 @@ footer { padding: 48px 0 40px; }
       </details>
       <details>
         <summary>Ist das ein Online- oder Präsenzkurs?</summary>
-        <p>Ein Online-Präsenz-Kurs. Wir treffen uns live online in den Sessions – über Zoom – und zeichnen jede Session auf. Wenn du einen Termin mal nicht schaffst, schaust du dir die Aufzeichnung in Ruhe an. Die genauen Termine stimmen wir aktuell noch intern ab. Da nie alle Termine zu 100&nbsp;% in jeden Kalender passen, gibt es eben jede Session als Aufzeichnung – du verpasst also nichts.</p>
+        <p>Ein Online-Präsenz-Kurs. Wir treffen uns live online in den Sessions – über Zoom – und zeichnen jede Session auf. Wenn du einen Termin mal nicht schaffst, schaust du dir die Aufzeichnung in Ruhe an. Alle Termine findest du im Fahrplan unter „Alle Termine im Überblick" (kleinere Verschiebungen sind möglich). Da nie alle Termine zu 100&nbsp;% in jeden Kalender passen, gibt es eben jede Session als Aufzeichnung – du verpasst also nichts.</p>
       </details>
       <details>
         <summary>Wie viel Zeit muss ich pro Woche einplanen?</summary>
