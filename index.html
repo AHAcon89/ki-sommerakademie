@@ -269,16 +269,103 @@ footer { padding: 48px 0 40px; }
   .badge { left: 24px; }
   .final { margin: 0 12px; padding: 56px 24px; }
 }
+
+/* ===== Sticky top: Countdown-Banner + Header ===== */
+.sticky-top { position: sticky; top: 0; z-index: 60; }
+
+.cd-banner {
+  position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(120deg, #B40F1B 0%, #FF5559 50%, #B40F1B 100%);
+  background-size: 200% 100%;
+  animation: cdShift 9s linear infinite;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+@keyframes cdShift { to { background-position: 200% 0; } }
+/* sanfter Glanz, der durchläuft */
+.cd-banner::after {
+  content: ""; position: absolute; inset: 0 auto 0 -35%; width: 35%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+  transform: skewX(-20deg); pointer-events: none;
+  animation: cdSheen 6s ease-in-out infinite;
+}
+@keyframes cdSheen { 0% { left: -35%; } 55%, 100% { left: 135%; } }
+
+.cd-inner {
+  position: relative; z-index: 1; max-width: 1080px; margin: 0 auto;
+  padding: 9px 24px; display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 8px 16px; font-size: .92rem;
+}
+.cd-pulse {
+  width: 9px; height: 9px; border-radius: 50%; background: #fff; flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(255,255,255,.7); animation: cdPulse 1.7s infinite;
+}
+@keyframes cdPulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,255,255,.6); }
+  70% { box-shadow: 0 0 0 9px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+.cd-text { font-weight: 500; }
+.cd-text strong { font-weight: 800; }
+.cd-timer { display: inline-flex; align-items: center; gap: 6px; }
+.cd-unit {
+  display: inline-flex; flex-direction: column; align-items: center;
+  background: rgba(255,255,255,.16); border-radius: 9px; padding: 3px 9px; min-width: 46px; line-height: 1.05;
+}
+.cd-unit b { font-weight: 800; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.cd-unit i { font-style: normal; font-size: .58rem; text-transform: uppercase; letter-spacing: .09em; opacity: .82; margin-top: 1px; }
+.cd-sep { font-weight: 800; opacity: .55; }
+.cd-secs { animation: cdTick .45s ease; }
+@keyframes cdTick { 0% { transform: scale(1.16); } 100% { transform: scale(1); } }
+.cd-cta {
+  background: #fff; color: var(--aha-red); font-weight: 800; font-size: .85rem;
+  padding: 7px 15px; border-radius: 10px; text-decoration: none; white-space: nowrap;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.cd-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.20); }
+
+/* Header sitzt im sticky-Wrapper, daher selbst nicht mehr sticky */
+.sticky-top header { position: static; }
+
+@media (max-width: 640px) {
+  .cd-inner { padding: 8px 14px; font-size: .82rem; gap: 7px 12px; }
+  .cd-text { width: 100%; text-align: center; }
+  .cd-unit { min-width: 40px; padding: 2px 6px; }
+  .cd-unit b { font-size: .98rem; }
+  .cd-cta { font-size: .8rem; padding: 6px 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cd-banner, .cd-banner::after, .cd-pulse, .cd-secs { animation: none; }
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="nav">
-    <img src="https://cdn.prod.website-files.com/68920416a8cb4ebd624c6000/689ada7b8ddf6669fe0ac0ad_logo-aha-consulting.png" alt="AHA Consulting">
-    <a class="btn btn-sm js-stripe" href="#preis">Jetzt Platz sichern</a>
+<div class="sticky-top">
+  <!-- ===== Early-Bird Countdown-Banner ===== -->
+  <div class="cd-banner" id="cdBanner" role="region" aria-label="Frühbucher-Rabatt – verbleibende Zeit">
+    <div class="cd-inner">
+      <span class="cd-pulse" aria-hidden="true"></span>
+      <span class="cd-text">Frühbucher-Rabatt &minus;700&nbsp;&euro; &middot; endet <strong>30.06., 23:59</strong> &middot; noch</span>
+      <span class="cd-timer" id="cdTimer" aria-live="off">
+        <span class="cd-unit"><b id="cdD">00</b><i>Tage</i></span>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <span class="cd-unit"><b id="cdH">00</b><i>Std</i></span>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <span class="cd-unit"><b id="cdM">00</b><i>Min</i></span>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <span class="cd-unit"><b id="cdS" class="cd-secs">00</b><i>Sek</i></span>
+      </span>
+      <a class="cd-cta js-stripe" href="#preis">Jetzt sichern</a>
+    </div>
   </div>
-</header>
+
+  <header>
+    <div class="nav">
+      <img src="https://cdn.prod.website-files.com/68920416a8cb4ebd624c6000/689ada7b8ddf6669fe0ac0ad_logo-aha-consulting.png" alt="AHA Consulting">
+      <a class="btn btn-sm js-stripe" href="#preis">Jetzt Platz sichern</a>
+    </div>
+  </header>
+</div>
 
 <!-- ======================== HERO ======================== -->
 <section class="hero">
@@ -526,6 +613,14 @@ footer { padding: 48px 0 40px; }
         <p>Ein Claude-Abonnement oder einen Claude API-Key sowie Claude Desktop oder Claude Code auf deinem Computer. Das war's. Mit dem Onboarding-Video richtest du alles vorab ein und prüfst, ob die Voraussetzungen bei dir erfüllt sind – du musst vorher nichts können.</p>
       </details>
       <details>
+        <summary>Welche Kosten kommen zusätzlich auf mich zu?</summary>
+        <p>Neben der Kursgebühr brauchst du eine Claude-Lizenz – die Standard-Variante kostet rund 18&nbsp;&euro; im Monat. Wir empfehlen, mit einem Monatsabo zu starten: So bleibst du flexibel und musst es erst zum ersten Termin abschließen. Den Tokenverbrauch beim Bauen der Tools kannst du getrost vergessen – er ist sehr überschaubar, in der Regel reicht das kleinste Paket locker aus. Unsere Tools umfassen meist nur ein paar hundert Zeilen Code, da explodiert nichts.</p>
+      </details>
+      <details>
+        <summary>Läuft das in meiner DATEV- oder ASP-Umgebung?</summary>
+        <p>Claude installierst du lokal auf deinem PC – nicht auf dem DATEV-Server. Dort baust du auch deine Tools. Das fertige Tool ist eine eigenständige HTML-Datei, die du in deiner DATEV-Umgebung im Browser öffnest – erst dann kann sie mit den DATEV-Schnittstellen kommunizieren. Auf einem Partner-ASP läuft das bereits erfolgreich; nötig sind lediglich die Rechte, lokal einen Browser bzw. Claude Desktop zu nutzen. Sollte in deiner Umgebung etwas klemmen, begleiten wir dich beim ersten Termin – notfalls gemeinsam mit deinem ASP-Anbieter.</p>
+      </details>
+      <details>
         <summary>Wann startet der Kurs und wie läuft er ab?</summary>
         <p>Das Programm startet am 16. Juli und läuft 12 Wochen. In den ersten 6 Wochen führen wir dich in Claude Code ein und bauen gemeinsam ein Tool, das ihr produktiv in eurer Kanzlei einsetzen könnt. In den zweiten 6 Wochen setzt du dein eigenes Tool um – begleitet von wöchentlicher Office-Hour und E-Mail-Support. Ergänzend gibt es eine weiterführende Session zum Thema Webhosting, damit ihr eure Tools auch in der Kanzlei bereitstellen könnt. Der Fokus liegt dabei von Anfang an auf Einfachheit und Umsetzbarkeit.</p>
       </details>
@@ -542,8 +637,16 @@ footer { padding: 48px 0 40px; }
         <p>Zwei Tools. Erst bauen wir gemeinsam eines, das ihr direkt produktiv einsetzen könnt – so lernst du die Arbeitsweise an einem echten Projekt. Danach setzt du dein eigenes Kanzlei-Tool um – etwa Mandantendaten automatisch aufbereiten, Auswertungen automatisieren oder eine interne Wissensdatenbank aufbauen.</p>
       </details>
       <details>
+        <summary>Funktioniert das nur mit DATEV?</summary>
+        <p>Der Fokus liegt auf DATEV – da kennt sich Andreas am besten aus und zeigt, wie man Tools baut und die Schnittstellen anspricht. Wenn du ein anderes System nutzt, das eine API bietet, lässt sich das aber genauso anbinden. Für deine individuellen Fälle haben wir eigene Q&amp;A-Calls, in denen wir gezielt darauf eingehen.</p>
+      </details>
+      <details>
         <summary>Für wen ist das Programm gedacht?</summary>
         <p>Für Steuerberater:innen, Steuerfachangestellte und Steuerfachwirte, die KI nicht nur konsumieren, sondern konkret im Kanzleialltag anwenden wollen.</p>
+      </details>
+      <details>
+        <summary>Können mehrere Personen aus meiner Kanzlei teilnehmen?</summary>
+        <p>Ja, gern – die Sommerakademie ist als Kurs für die Kanzlei gedacht, es gibt keine Kopf-Begrenzung. Du meldest dich einfach an und teilst uns deine Kolleginnen und Kollegen danach formlos per Mail mit; wir laden sie dann alle ein. Unser Tipp: Startet lieber mit einem kleinen, fokussierten Team aus zwei, drei Leuten, die sich gut abstimmen können – so kommt ihr schneller zu einem ersten Erfolgserlebnis.</p>
       </details>
       <details>
         <summary>Wie läuft das mit DS-GVO und Verschwiegenheitspflicht?</summary>
@@ -594,6 +697,42 @@ footer { padding: 48px 0 40px; }
       btn.rel = "noopener";
     });
   }
+</script>
+
+<script>
+  // ===== Early-Bird Countdown =====
+  // Deadline: 30.06.2026, 23:59:59 deutscher Zeit (CEST = UTC+2)
+  (function () {
+    var deadline = new Date('2026-06-30T23:59:59+02:00').getTime();
+    var banner = document.getElementById('cdBanner');
+    var elD = document.getElementById('cdD'),
+        elH = document.getElementById('cdH'),
+        elM = document.getElementById('cdM'),
+        elS = document.getElementById('cdS');
+    if (!banner || !elS) return;
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function tick() {
+      var diff = deadline - Date.now();
+      if (diff <= 0) { banner.remove(); return; }   // nach Ablauf Banner ausblenden
+      var s = Math.floor(diff / 1000);
+      var d = Math.floor(s / 86400); s -= d * 86400;
+      var h = Math.floor(s / 3600);  s -= h * 3600;
+      var m = Math.floor(s / 60);    s -= m * 60;
+      elD.textContent = pad(d);
+      elH.textContent = pad(h);
+      elM.textContent = pad(m);
+      elS.textContent = pad(s);
+      // kleiner Tick-Effekt auf den Sekunden
+      elS.classList.remove('cd-secs');
+      void elS.offsetWidth;
+      elS.classList.add('cd-secs');
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
 </script>
 
 </body>
