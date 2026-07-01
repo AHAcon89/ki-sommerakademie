@@ -341,11 +341,11 @@ footer { padding: 48px 0 40px; }
 <body>
 
 <div class="sticky-top">
-  <!-- ===== Early-Bird Countdown-Banner ===== -->
-  <div class="cd-banner" id="cdBanner" role="region" aria-label="Frühbucher-Rabatt – verbleibende Zeit">
+  <!-- ===== Kursstart Countdown-Banner ===== -->
+  <div class="cd-banner" id="cdBanner" role="region" aria-label="Countdown bis Kursstart">
     <div class="cd-inner">
       <span class="cd-pulse" aria-hidden="true"></span>
-      <span class="cd-text">Frühbucher-Rabatt &minus;700&nbsp;&euro; &middot; endet <strong>30.06., 23:59</strong> &middot; noch</span>
+      <span class="cd-text">Die KI-Sommerakademie startet am <strong>16. Juli</strong> &middot; Plätze begrenzt &middot; Kursstart in</span>
       <span class="cd-timer" id="cdTimer" aria-live="off">
         <span class="cd-unit"><b id="cdD">00</b><i>Tage</i></span>
         <span class="cd-sep" aria-hidden="true">:</span>
@@ -575,13 +575,12 @@ footer { padding: 48px 0 40px; }
     </div>
     <div class="price-single">
       <div class="price-card featured">
-        <span class="badge">Early-Bird &middot; Du sparst 700&nbsp;&euro;</span>
+        <span class="badge">Begrenzte Plätze</span>
         <h3>KI-Sommerakademie &middot; Vollzugang</h3>
         <div class="price">
-          <span class="price-old">4.950&nbsp;&euro;</span>
-          4.250&nbsp;&euro; <span class="price-vat">zzgl. 19&nbsp;% USt.</span>
+          4.950&nbsp;&euro; <span class="price-vat">zzgl. 19&nbsp;% USt.</span>
         </div>
-        <p class="price-sub">Early-Bird-Preis bei Anmeldung bis 30. Juni &middot; danach gilt der reguläre Preis von 4.950&nbsp;&euro; zzgl. USt.</p>
+        <p class="price-sub">Einmaliger Komplettpreis für den vollen Zugang – alle Live-Sessions, Aufzeichnungen und persönliche Begleitung inklusive.</p>
         <ul>
           <li>12 Wochen Programm mit Live-Sessions</li>
           <li>Onboarding-Video zur Vorbereitung vor Kursstart</li>
@@ -589,7 +588,7 @@ footer { padding: 48px 0 40px; }
           <li>Eigenes Tool mit persönlicher Begleitung</li>
           <li>Wöchentliche Office-Hour &amp; E-Mail-Support in der Umsetzungsphase</li>
         </ul>
-        <a class="btn js-stripe" href="#">Jetzt zum Early-Bird-Preis buchen</a>
+        <a class="btn js-stripe" href="#">Jetzt Platz sichern</a>
       </div>
     </div>
     <p class="price-note">Die Plätze sind begrenzt, damit jedes Projekt persönliche Begleitung bekommt. Fragen vorab? Schreib an <a href="mailto:andreas@ah.consulting" style="color:var(--aha-red);">andreas@ah.consulting</a>.</p>
@@ -654,10 +653,6 @@ footer { padding: 48px 0 40px; }
         <p>Wir bauen gemeinsam mit Claude Code Lösungen, über die ihr eure Kanzleidaten verarbeitet. Die Daten werden dabei nicht durch Claude verarbeitet – Claude baut nur die Software. Die laufenden Lösungen kommen in der Regel ganz ohne zusätzliche Datenbank aus; und selbst wenn eine nötig wäre, läge sie bei einem DS-GVO-konformen EU-Hoster. Ein Beispiel: Ein Datenkonverter nimmt deine CSV-Datei, konvertiert sie lokal in deiner DATEV-Umgebung und schreibt die Buchungssätze direkt in DATEV.</p>
         <p>Der einzige Punkt, auf den wir achten: Wenn wir Claude Beispieldaten zum Bauen einer Software geben, anonymisieren wir diese vorher. So bekommen wir keine Probleme mit der DS-GVO.</p>
       </details>
-      <details>
-        <summary>Gibt es eine Early-Bird-Option?</summary>
-        <p>Ja. Bei Anmeldung bis zum 30. Juni zahlst du 4.250&nbsp;&euro; statt 4.950&nbsp;&euro; (jeweils zzgl. 19&nbsp;% USt.) – du sparst also 700&nbsp;&euro;. Der Leistungsumfang ist identisch.</p>
-      </details>
     </div>
   </div>
 </section>
@@ -688,7 +683,7 @@ footer { padding: 48px 0 40px; }
   // const STRIPE_URL = "https://buy.stripe.com/xxxxxxxxxxxx";
   // Alle Buttons mit der Klasse .js-stripe verlinken dann automatisch dorthin.
   // =====================================================================
-  const STRIPE_URL = "https://book.stripe.com/bJeeVe9PI4EedCO8tY5os05?prefilled_promo_code=EARLYBIRD2026";
+  const STRIPE_URL = "https://book.stripe.com/bJeeVe9PI4EedCO8tY5os05";
 
   if (STRIPE_URL) {
     document.querySelectorAll('.js-stripe').forEach(btn => {
@@ -700,10 +695,10 @@ footer { padding: 48px 0 40px; }
 </script>
 
 <script>
-  // ===== Early-Bird Countdown =====
-  // Deadline: 30.06.2026, 23:59:59 deutscher Zeit (CEST = UTC+2)
+  // ===== Kursstart Countdown =====
+  // Kursstart: 16.07.2026, 13:00 deutscher Zeit (CEST = UTC+2)
   (function () {
-    var deadline = new Date('2026-06-30T23:59:59+02:00').getTime();
+    var deadline = new Date('2026-07-16T13:00:00+02:00').getTime();
     var banner = document.getElementById('cdBanner');
     var elD = document.getElementById('cdD'),
         elH = document.getElementById('cdH'),
